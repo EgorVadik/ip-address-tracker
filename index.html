@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png"
+        />
+
+        <title>Frontend Mentor | IP Address Tracker</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+            integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""
+        ></script>
+
+        <script src="script.js" defer></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            rubik: ['Rubik', 'sans-serif'],
+                        },
+                        colors: {
+                            darkGray: 'hsl(0, 0%, 59%)',
+                            veryDarkGray: 'hsl(0, 0%, 17%)',
+                        },
+                    },
+                },
+            }
+        </script>
+    </head>
+
+    <body>
+        <header
+            class="bg-[url('./images/pattern-bg.png')] w-screen h-64 bg-no-repeat bg-cover absolute inset-0"
+        ></header>
+        <main class="relative font-rubik min-h-screen overflow-hidden">
+            <div class="text-center m-auto w-[90%] md:w-1/2 relative z-20">
+                <h1 class="text-white text-3xl my-7 font-medium">
+                    IP Address Tracker
+                </h1>
+                <div class="flex">
+                    <input
+                        type="text"
+                        id="input"
+                        placeholder="Search for any IP address or domain"
+                        class="w-[85%] py-5 px-4 rounded-l-xl text-lg focus:outline-none"
+                    />
+                    <button
+                        class="bg-black px-6 rounded-r-xl hover:bg-veryDarkGray"
+                        onclick="searchAddress()"
+                    >
+                        <img
+                            src="./images/icon-arrow.svg"
+                            alt="arrow icon"
+                            id="arrow"
+                        />
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="grid md:flex text-center place-content-center md:text-start md:space-x-10 flex-wrap w-[90%] lg:w-[80%] m-auto bg-white rounded-lg text-darkGray text-sm mt-10 relative z-10 shadow-xl shadow-darkGray"
+            >
+                <div class="p-5 py-0 md:py-6">
+                    <p>IP Address</p>
+                    <h1
+                        class="text-veryDarkGray text-lg font-medium py-3"
+                        id="ip"
+                    >
+                        192.212.174.101
+                    </h1>
+                </div>
+                <div class="p-5 py-0 md:py-6">
+                    <p>Location</p>
+                    <h1
+                        class="text-veryDarkGray text-lg font-medium py-3"
+                        id="location"
+                    >
+                        California, US
+                    </h1>
+                </div>
+                <div class="p-5 py-0 md:py-6">
+                    <p>Timezone</p>
+                    <h1
+                        class="text-veryDarkGray text-lg font-medium py-3"
+                        id="timezone"
+                    >
+                        UTC -08:00
+                    </h1>
+                </div>
+                <div class="p-5 py-0 md:py-6">
+                    <p>ISP</p>
+                    <h1
+                        class="text-veryDarkGray text-lg font-medium py-3"
+                        id="isp"
+                    >
+                        Southern California Edison
+                    </h1>
+                </div>
+            </div>
+            <div id="map" class="h-[70%] w-full z-0 absolute bottom-0"></div>
+        </main>
+    </body>
+</html>
